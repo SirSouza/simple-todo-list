@@ -1,47 +1,137 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	font-family: "Shadows Into Light", cursive, monospace;
 }
+
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100wh;
-	height: 100vh;
+	min-height: 100vh;
 	background-color: #eae2cf;
 }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
 .container {
-	width: 1040px;
+	width: min(1040px, 95vw);
 	height: 800px;
 	background-color: #fbeecc;
-	padding: 30px;
+	padding: 30px 30px 20px;
 	border-radius: 30px;
-	-webkit-box-shadow: 1px 1px 26px 0px #0000008c;
-	box-shadow: 1px 1px 26px 0px #0000008c;
+	box-shadow: 1px 1px 26px 0px rgba(0, 0, 0, 0.55);
 	overflow: hidden;
-	padding-bottom: 20px;
 }
 
+/* ============================================
+   HEADER
+   ============================================ */
 header {
-	width: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	padding-top: 10px;
-	h1 {
-		font-size: 50px;
-	}
-	p {
-		font-size: 20px;
-	}
+	text-align: center;
 }
+
 header img {
 	width: 80px;
-	
 }
+
+header h1 {
+	font-size: clamp(2rem, 5vw, 3.125rem);
+}
+
+header p {
+	font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+/* ============================================
+   MENU (Clock & Calendar)
+   ============================================ */
+.menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	height: 60px;
+	padding: 10px;
+	border-bottom: 1px solid grey;
+}
+
+.clockContainer,
+.dateContainer {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.clockContainer img,
+.dateContainer img {
+	height: 40px;
+}
+
+.clock,
+.calendar {
+	font-size: 1.563rem;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+/* ============================================
+   INPUT SECTION
+   ============================================ */
+.inputTaskContainer {
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+	height: 50px;
+	padding: 10px;
+}
+
+#inputTask {
+	width: 400px;
+	padding: 15px;
+	font-size: 1.25rem;
+	text-align: center;
+	background: transparent;
+	border: 1px solid grey;
+	border-radius: 5px;
+	outline: none;
+}
+
+.buttonAddTask {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding-inline: 10px;
+	background: transparent;
+	border: 1px solid grey;
+	border-radius: 5px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.buttonAddTask img {
+	width: 20px;
+	height: 20px;
+}
+
+.buttonAddTask:hover {
+	background-color: rgb(226, 209, 226);
+}
+
+/* ============================================
+   TASKS SECTION
+   ============================================ */
 .content {
 	width: 100%;
 	height: 500px;
@@ -54,140 +144,191 @@ header img {
 	gap: 10px;
 	padding: 10px;
 }
-.menu {
-	height: 60px;
-	padding: 10px;
-	border-bottom: 1px solid grey;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.inputTaskContainer {
-	height: 50px;
-	padding: 10px;
-	display: flex;
-	gap: 10px;
-	display: flex;
-	justify-content: space-around;
-}
+
+/* Active Tasks */
 .ActiveTasksContainer {
 	flex: 2;
 	padding: 10px;
 }
+
+.ActiveTasksContainer h3,
+.completedTasksContainer h3 {
+	border-bottom: 1px solid grey;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+
 .ActiveTasks {
-	width: 100%;
-	max-height: 280px;
-	overflow: auto;
-	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	max-height: 280px;
+	padding: 10px;
+	overflow-y: auto;
 	list-style: none;
 }
-.ActiveTasks li {
-	display: flex;
-	border-bottom: 1px solid grey;
-	justify-content: space-between;
+
+/* Completed Tasks */
+.completedTasksContainer {
+	flex: 1;
+	padding: 10px;
 }
+
+.completedTasks {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-height: 200px;
+	padding: 10px;
+	overflow-y: auto;
+	list-style: none;
+}
+
+/* Task Items (Shared Styles) */
+.ActiveTasks li,
+.completedTasks li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid grey;
+}
+
+.task {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
 .ActiveTasks span {
-	font-size: 20px;
+	font-size: 1.25rem;
 	letter-spacing: 2px;
 }
+
+.completedTasks span {
+	font-size: 1.25rem;
+	letter-spacing: 2px;
+	text-decoration: line-through;
+	color: grey;
+}
+
+/* Task Icons */
 .imageCheck {
 	width: 20px;
 	height: 25px;
 	cursor: pointer;
+	transition: transform 0.2s ease;
 }
 
-.completedTasksContainer {
-	flex: 1;
-	padding: 10px;
-	h3 {
-		border-bottom: 1px solid gray;
-	}
+.imageCheck:hover {
+	transform: scale(1.1);
 }
 
-.completedTasks {
-	width: 100%;
-	max-height: 280px;
-	overflow: auto;
-	padding: 10px;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	list-style: none;
-	
-}
 .trash {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
-}
-.task {
-	display: flex;
-	gap: 5px;
-}
-.completedTasks li {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 1px solid grey;
-}
-.completedTasks span {
-	text-decoration: line-through;
-	color: grey;
-}
-#inputTask {
-	width: 400px;
-	padding: 15px;
-	font-size: 20px;
-	border-radius: 5px;
-	outline: none;
-	border: 1px solid grey;
-	background: transparent;
-	text-align: center;
-}
-.buttonAddTask {
-	display: flex;
-	gap: 5px;
-	align-items: center;
-	padding-inline: 10px;
-	cursor: pointer;
-	background: transparent;
-	border-radius: 5px;
-	border: 1px solid grey;
-	text-transform: uppercase;
-}
-.buttonAddTask img {
-	width: 20px;
-	height: 20px;
+	transition: transform 0.2s ease;
 }
 
-.buttonAddTask:hover {
-	background-color: rgb(226, 209, 226);
-}
-.clockContainer {
-	display: flex;
-	align-items: center;
-}
-.clockContainer img {
-	height: 40px;
-}
-.clock {
-	font-size: 25px;
-	font-weight: bold;
-	letter-spacing: 3px;
-}
-.dateContainer {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-.dateContainer img {
-	height: 40px;
-}
-.calendar {
-	font-size: 25px;
-	font-weight: bold;
-	letter-spacing: 3px;
+.trash:hover {
+	transform: scale(1.1);
 }
 
+/* Custom Scrollbar */
+.ActiveTasks::-webkit-scrollbar,
+.completedTasks::-webkit-scrollbar {
+	width: 8px;
+}
+
+.ActiveTasks::-webkit-scrollbar-track,
+.completedTasks::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ActiveTasks::-webkit-scrollbar-thumb,
+.completedTasks::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 4px;
+}
+
+.ActiveTasks::-webkit-scrollbar-thumb:hover,
+.completedTasks::-webkit-scrollbar-thumb:hover {
+	background: #999;
+}
+
+/* ============================================
+   MEDIA QUERIES
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 800px) {
+	.container {
+		padding: 20px;
+	}
+
+	.menu {
+		height: auto;
+		gap: 0.5rem;
+	}
+
+	#inputTask {
+		width: 250px;
+	}
+
+	.buttonAddTask {
+		padding-inline: 10px;
+	}
+
+	.clock,
+	.calendar {
+		font-size: 0.938rem;
+	}
+
+	.clockContainer img,
+	.dateContainer img {
+		height: 25px;
+	}
+
+	.ActiveTasks span,
+	.completedTasks span {
+		font-size: 1rem;
+	}
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+	.container {
+		height: auto;
+		max-height: 95vh;
+	}
+
+	.menu {
+		flex-direction: column;
+		gap: 1rem;
+		padding: 15px 10px;
+	}
+
+	.inputTaskContainer {
+		gap: 15px;
+	}
+
+	#inputTask {
+		width: 150px;
+	}
+	.buttonAddTask {
+		font-size: 10px;
+	}
+	.ActiveTasks,
+	.completedTasks {
+		max-height: 150px;
+	}
+
+	header h1 {
+		font-size: 2rem;
+	}
+
+	header p {
+		font-size: 1rem;
+	}
+}
