@@ -16,27 +16,37 @@
 	</head>
 	<body>
 		<div class="container">
+			<!-- Header Start-->
 			<header>
+				<img src="assets/images/icons8-lista-de-tarefas-50.png" alt="" />
 				<h1>Simple</h1>
 				<p>To-Do List</p>
 			</header>
+			<!-- Header End-->
 			<main class="content">
-				<div class="title"></div>
-				<!-- Filters  Start -->
-				<div class="filters">
-					<div class="all">
-						<h3>All Taks</h3>
-						<span class="allTask">x</span>
+				<section class="tasks">
+					<div class="menu">
+						<div class="inputTaskContainer">
+							<input type="text" placeholder="Add Task Here" id="inputTask" />
+							<button class="buttonAddTask">
+								<img src="assets/images/icons8-adicionar-100.png" alt="" />add task
+							</button>
+						</div>
+						<div class="clockContainer">
+							<img src="assets/images/icons8-ampulheta-48.png" alt="">
+							<div class="clock"></div>
+						</div>
+						<div class="dateContainer">
+							<img src="assets/images/icons8-calendário-48.png" alt="">
+							<div class="calendar"></div>
+						</div>
+						
 					</div>
-					<div class="completed">
-						<h3>Completed tasks</h3>
-						<span class="compledTasks">completed</span>
-					</div>
-					<div class="progress">All tasks - completed</div>
-				</div>
-				<!-- Filters  End -->
 
-				<section></section>
+					<div class="ActiveTasks">all</div>
+
+					<div class="completedTasks">completed</div>
+				</section>
 			</main>
 		</div>
 		<script src="assets/js/script.js"></script>
