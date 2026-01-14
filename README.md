@@ -469,7 +469,6 @@ Each created task generates the following structure:
 - [ ] Task editing
 - [ ] Filters (all/active/completed)
 - [ ] Task counter
-- [ ] Drag and drop to reorder
 - [ ] Categories/tags
 - [ ] Dark mode
 
