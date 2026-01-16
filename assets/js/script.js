@@ -1,5 +1,3 @@
-/* Global variables */
-
 /* Elements */
 const inputTask = document.querySelector("#inputTask");
 const button = document.querySelector(".buttonAddTask");
